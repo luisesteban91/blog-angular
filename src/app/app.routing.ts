@@ -10,6 +10,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { CategoryNewComponent } from './components/category-new/category-new.component';
 import { PostNewComponent } from './components/post-new/post-new.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
 //DEFINIR RUTAS
   const appRoutes: Routes =[
@@ -22,7 +23,9 @@ import { PostNewComponent } from './components/post-new/post-new.component';
     {path: 'ajustes', component: UserEditComponent},
     {path: 'crear-categoria', component: CategoryNewComponent},
     {path: 'crear-entrada', component: PostNewComponent},
-    {path: '**', component: ErrorComponent}
+    {path: 'entrada/:id', component: PostDetailComponent},
+
+    {path: '**', component: ErrorComponent} //siempre al final
   ];
 
 //EXPORTAR CONFIGURACION
