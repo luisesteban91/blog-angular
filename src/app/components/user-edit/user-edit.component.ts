@@ -19,11 +19,12 @@ export class UserEditComponent implements OnInit {
   public url;
 
   public froala_options: Object = {
-    charCounterCount: true,
-    toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
-    toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
-    toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
-    toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat','alert'],
+		charCounterCount: true,
+		languaje: 'es',
+    toolbarButtons: ['bold', 'italic', 'underline', 'paragraphFormat'],
+    toolbarButtonsXS: ['bold', 'italic', 'underline', 'paragraphFormat'],
+    toolbarButtonsSM: ['bold', 'italic', 'underline', 'paragraphFormat'],
+    toolbarButtonsMD: ['bold', 'italic', 'underline', 'paragraphFormat'],
   };
   public afuConfig = {
     multiple: false,

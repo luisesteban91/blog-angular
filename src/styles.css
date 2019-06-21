@@ -13,10 +13,23 @@
 .avatar-mask img{
 	height: 40px;
 }
+.avatar-mask_profile{
+		width: 80px;
+		height: 80px;
+		border-radius: 900px;
+		overflow: hidden;
+}
+.avatar-mask_profile img{
+	height: 80px;
+}
 .card-header a{
 	color:#c3002f;
 }
 .post-image{
 	height: 200px;
 	overflow: hidden;
+}
+footer{
+	margin-top: 50px;
+	color: lightgray;
 }

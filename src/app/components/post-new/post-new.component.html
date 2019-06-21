@@ -1,8 +1,11 @@
 <div class="col-md-9 mt-3">
     <h1>{{page_title}}</h1>
-    <p>
+    <p *ngIf="!is_edit">
       Añade un nuevo articulo al blog
     </p>
+    <p *ngIf="is_edit">
+        Modifica el Post {{post.title}}
+      </p>
     <!-- Alertas -->
     <div class="alert alert-success col-md-5" *ngIf="status == 'success'">
       Los datos se han guardado correctamente
@@ -41,6 +44,11 @@
 
       <div class="form-group">
         <label for="image">Imagen</label>
+
+        <div *ngIf="is_edit && post.image">
+          <img src="{{url + 'post/image/' + post.image }}" class="avatar_edit">
+        </div>
+
         <angular-file-uploader
           [config]="afuConfig"
           [resetUpload]="resetVar"
