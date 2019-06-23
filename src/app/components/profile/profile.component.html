@@ -16,9 +16,11 @@
 
         <hr>
       
-      <!-- Lsitado de entradas -->
-      <post-list [posts]="posts"
+      <!-- Lsitado de entradas con componente optimizado comunicacion
+     entre componentes para no repetir codigo como si fuera un metodo 
+     post.list.component.ts-->
+      <post-list [posts]="posts" 
                  [identity]="identity"
-                 [url]="url"></post-list>
+                 [url]="url"></post-list><!--Variables que se utilzian en las vistas post identioty url-->
   </div>
   

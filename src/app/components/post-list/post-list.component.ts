@@ -1,6 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { identity } from 'rxjs';
-import { url } from 'inspector';
+import { Component, OnInit, Input } from '@angular/core'; //input comunicacion entre componentes(componente padre)
 
 @Component({
   selector: 'post-list',
