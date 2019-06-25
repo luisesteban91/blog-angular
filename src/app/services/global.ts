@@ -1,7 +1,7 @@
 export var global = {
 	//url: 'http://localhost:8888/master-fullstack/api-rest-laravel/public/api/',
 	//url: 'http://api-rest-laravel.com.devel/api/',
-	url: 'https://api-rest-laravel-backend.herokuapp.com/api/',
+	url: 'https://api-rest-laravel-backend.herokuapp.com/public/api/',
 
 	//url de una imagen de usuario http://localhost:8888/master-fullstack/api-rest-laravel/public/api/user/avatar/1560971407logo-nissan.jpg
 	htmlEntities: function(str) {
