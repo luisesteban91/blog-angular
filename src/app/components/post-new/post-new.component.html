@@ -12,7 +12,7 @@
     </div>
   
     <div class="alert alert-danger col-md-5" *ngIf="status == 'error'">
-      Los datos no se han guardado correctamente
+      Los datos no se han guardado correctamentee {{mensaje_backend}} eee
     </div>
     
     <!-- Formulario crear entradas -->
@@ -46,7 +46,7 @@
         <label for="image">Imagen</label>
 
         <div *ngIf="is_edit && post.image">
-          <img src="{{url + 'post/image/' + post.image }}" class="avatar_edit">
+          <img src="{{url + 'post/image/' + post.image }}" class="avatar_edit" required />
         </div>
 
         <angular-file-uploader

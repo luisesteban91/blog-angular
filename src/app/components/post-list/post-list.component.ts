@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core'; //input comunicacion entre componentes(componente padre)
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core'; //input comunicacion entre componentes(componente padre)
 
 @Component({
   selector: 'post-list',
@@ -9,10 +9,16 @@ export class PostListComponent implements OnInit {
   @Input() posts;
   @Input() identity;
   @Input() url;
+  @Output() delete = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  deleteEntrada(postId){
+    // Usamos el método emit
+    this.delete.emit(postId);
   }
 
 }

@@ -21,6 +21,7 @@
      post.list.component.ts-->
       <post-list [posts]="posts" 
                  [identity]="identity"
-                 [url]="url"></post-list><!--Variables que se utilzian en las vistas post identioty url-->
+                 [url]="url"
+                 (delete)="deletePost($event)"></post-list><!--Variables que se utilzian en las vistas post identioty url-->
   </div>
   

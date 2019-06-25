@@ -21,6 +21,7 @@ export class PostNewComponent implements OnInit {
   public post: Post;
   public categories;
   public status;
+  public mensaje_backend;
 
   public froala_options: Object = {
     charCounterCount: true,
@@ -87,15 +88,20 @@ export class PostNewComponent implements OnInit {
   onSubmit(form){
     this._postService.create(this.token, this.post).subscribe(
       Response =>{
+          this.mensaje_backend = Response.message;
+          console.log(Response.message);
         if(Response.status == 'success'){
           this.post = Response.post;
           this.status = 'success';
           this._router.navigate(['/inicio']);
         }else{
           this.status = 'error';
+          this.mensaje_backend = Response.message;
+          console.log(Response.message);
         }
       },
       error => {
+        
         console.log(error);
         this.status = 'error';
       }
