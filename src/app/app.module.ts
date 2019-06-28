@@ -24,6 +24,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { DistribuidorDetailComponent } from './components/distribuidor-detail/distribuidor-detail.component';
 
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";//google place autocomplete
+
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { DistribuidorDetailComponent } from './components/distribuidor-detail/di
     HttpClientModule,
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),
-    AngularFileUploaderModule
+    AngularFileUploaderModule,
+    GooglePlaceModule //google
   ],
   providers: [
     appRoutingProviders,
