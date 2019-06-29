@@ -64,7 +64,7 @@ export class DistribuidorDetailComponent implements OnInit {
         }
       },
       error =>{
-        console.log(this.status = 'error');
+        console.log(this.status = 'error ');
         console.log(<any>error);
       }
     );

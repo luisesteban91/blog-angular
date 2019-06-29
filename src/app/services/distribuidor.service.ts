@@ -14,6 +14,8 @@ export class DistribuidorService{
 		this.url = global.url;
     }
 
+
+    
     getDistribuidor(token, datosDistribuidor):Observable<any>{
         let json = JSON.stringify(datosDistribuidor);
         let params = "json="+json;
