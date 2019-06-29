@@ -1,16 +1,38 @@
-<h1>{{title}}</h1>
-<div>
-  <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
-  <p>{{formattedAddress}}</p>
-</div>
-<div>
-  Lat:{{lat}}
-  Long:{{lng}}
-</div>
+<div class="container">
+  <div class="row justify-content-md-center">
+      <div class="col-md-auto">
+        <h1>{{title}}</h1>
+      </div>
+  </div>
 
 
 
-<div>
-  {{distribuidor}}
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-4" style="border-radius: 10px; background-color: #957bbe;">
+      
+      <div class="input-group input-group-sm mb-3">
+          <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Direccion</span>
+            </div>
+        <input  type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+        <p>{{formattedAddress}}</p>
+      </div>
+
+      
+      <div>
+        Lat:{{lat}}
+        Long:{{lng}}
+      </div>
+      <hr>
+      <div *ngIf="status">
+        <p>distribuidores:{{status}} </p>
+        <p *ngFor="let distribuidores of distribuidor">{{distribuidores.name}} => {{distribuidores.distance_in_km}} </p>
+      </div>
+    </div>
+
+    <div class="col-lg-6" style="border-radius: 10px; background-color: #80bdff;">
+      mapa
+    </div>
+  </div>
 </div>
 

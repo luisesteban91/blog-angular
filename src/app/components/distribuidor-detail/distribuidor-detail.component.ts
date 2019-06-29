@@ -50,12 +50,11 @@ export class DistribuidorDetailComponent implements OnInit {
 
     this._distribuidorService.getDistribuidor(this.token, address.geometry.location).subscribe(
       Response => {
-        console.log('repuesta: '+Response.status);
         if(Response.status == 'success'){
-          this.distribuidor = Response.distribuidor;
+          this.distribuidor = Response.distribuidores;
           this.status = 'success';
 
-          console.log("despuesd de aqui1");
+          console.log(Response.distribuidores);
 
           //this._router.navigate(['/home']);
         }else{
@@ -64,7 +63,7 @@ export class DistribuidorDetailComponent implements OnInit {
         }
       },
       error =>{
-        console.log(this.status = 'error ');
+        this.status = 'error ';
         console.log(<any>error);
       }
     );
