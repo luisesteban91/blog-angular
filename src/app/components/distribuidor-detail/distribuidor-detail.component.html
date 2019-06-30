@@ -15,24 +15,61 @@
               <span class="input-group-text" id="inputGroup-sizing-sm">Direccion</span>
             </div>
         <input  type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
-        <p>{{formattedAddress}}</p>
+        <br>
+        
       </div>
 
       
       <div>
+        <p>{{formattedAddress}}</p>
         Lat:{{lat}}
         Long:{{lng}}
       </div>
       <hr>
+
+      <div *ngIf="status" class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Options</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01">
+          <option selected>Choose...</option>
+          <option *ngFor="let distribuidores of distribuidor" value="{{distribuidores.name}}">{{distribuidores.name}}</option>
+        </select>
+      </div>
+
       <div *ngIf="status">
-        <p>distribuidores:{{status}} </p>
         <p *ngFor="let distribuidores of distribuidor">{{distribuidores.name}} => {{distribuidores.distance_in_km}} </p>
       </div>
     </div>
 
-    <div class="col-lg-6" style="border-radius: 10px; background-color: #80bdff;">
-      mapa
+    <!--<p>https://angular-maps.com/guides/getting-started/#setting-up-angular-google-maps cocumentacion</p>-->
+    <div class="col-lg-6" style="border-radius: 10px; background-color: #80bdff;padding-top: 10px;">
+        <div *ngIf="status">
+          <agm-map [latitude]="lat"
+                    [longitude]="lng"
+                    [zoom]="zoom"
+                    (mapClick)="mapCliqueado($event)">
+                        <agm-marker
+                          *ngFor="let m of distribuidor; let i = index"
+                          (markerClick)="marcadorCliqueado(m, i)"
+                          [latitude]="m.lat" 
+                          [longitude]="m.lng"
+                          [markerDraggable]="true"
+                          (dragEnd)="posicionFinalMarcador(m, $event)">
+
+                          <agm-info-window>
+                            <strong>{{m.name}}</strong>
+                          </agm-info-window>
+
+                        </agm-marker>
+          </agm-map>
+        </div>
+
+        <div *ngIf="!status">
+          <agm-map [latitude]="lat" [longitude]="lng">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+        </div>
     </div>
   </div>
 </div>
-

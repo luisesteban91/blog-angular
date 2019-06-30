@@ -24,7 +24,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { DistribuidorDetailComponent } from './components/distribuidor-detail/distribuidor-detail.component';
 
-import { GooglePlaceModule } from "ngx-google-places-autocomplete";//google place autocomplete
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";//google place autocomplete}
+import { AgmCoreModule } from '@agm/core';//mapa de google
 
 
 @NgModule({
@@ -52,7 +53,10 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";//google plac
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),
     AngularFileUploaderModule,
-    GooglePlaceModule //google
+    GooglePlaceModule, //google autocomplete
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBIUBxtqHWtdkVsczdyAmQAtR_AH93GVMc'
+    }) //mapa google
   ],
   providers: [
     appRoutingProviders,

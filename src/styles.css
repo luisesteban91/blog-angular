@@ -33,3 +33,7 @@ footer{
 	margin-top: 50px;
 	color: lightgray;
 }
+
+agm-map {
+  	height: 300px;
+}

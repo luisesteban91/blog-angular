@@ -10,7 +10,28 @@ import { Distribuidor } from '../../models/distribuidor';
   styleUrls: ['./distribuidor-detail.component.css'],
   providers: [UserService, DistribuidorService]
 })
-export class DistribuidorDetailComponent implements OnInit {
+export class DistribuidorDetailComponent implements OnInit{
+
+  markers: marker[] = [
+    {
+      nombre: 'Cordoba',
+      lat: 18.8997709,
+      lng: -96.9685095,
+      arrastrable: true
+    },
+    {
+      nombre: 'ORIZABA',
+      lat: 18.8552386,
+      lng: -97.0763362,
+      arrastrable: true
+    },
+    {
+      nombre: 'XALAPA LAS AMÃ‰RICAS',
+      lat: 19.5151715,
+      lng: -96.8801199,
+      arrastrable: false
+    }
+  ];
 
   public title: string;
   public identity;
@@ -18,8 +39,9 @@ export class DistribuidorDetailComponent implements OnInit {
   public distribuidor: Distribuidor;
   public status:string;
 
-  public lat: string;
-  public lng: string;
+  public lat: number;
+  public lng: number;
+  public zoom: number;
 
   formattedAddress = '';
   options = {
@@ -37,6 +59,9 @@ export class DistribuidorDetailComponent implements OnInit {
     this.title = "Detalles del Distribuidor";
     this.token = this._userService.getToken();
     this.distribuidor = new  Distribuidor(1, '', '');
+    this.lat = 19.4326077;
+    this.lng = -99.13320799999997;
+    this.zoom = 15;
    }
 
   ngOnInit() {
