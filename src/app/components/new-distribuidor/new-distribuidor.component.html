@@ -1,0 +1,33 @@
+<div class="col-md-9 mt-3">
+    <h1>{{page_title}}</h1>
+    <p *ngIf="!is_edit">
+      Añade un nuevo Distribuidor
+    </p>
+
+    <!-- Alertas -->
+    <div class="alert alert-success col-md-5" *ngIf="status == 'success'">
+      Los datos se han guardado correctamente
+    </div>
+  
+    <div class="alert alert-danger col-md-5" *ngIf="status == 'error'">
+      Los datos no se han guardado correctamentee {{mensaje_backend}} eee
+    </div>
+    
+
+    <!-- Formulario crear entradas -->
+    <form class="col-md-5 ml-o pl-0" #NewDistribuidor="ngForm" (ngSubmit)="onSubmit(NewDistribuidor)">
+
+      <div class="form-group">
+        <label for="clave_interna">Clave Interna</label>
+        <input type="text" name="clave_interna" #title="ngModel" [(ngModel)]="Distribuidor.clave_interna" class="form-control" required>
+        <small *ngIf="!clave_interna.valid && clave_interna.touched" class="invalid-feedback d-block">
+          La clave no es valida
+        </small>
+      </div>
+
+
+      <input type="submit" value="Guardar" class="btn btn-success" [disabled]="NewDistribuidor.invalid"/>
+
+    </form>
+    <br>
+  </div>

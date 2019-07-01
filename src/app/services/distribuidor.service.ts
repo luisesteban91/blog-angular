@@ -20,6 +20,8 @@ export class DistribuidorService{
         let json = JSON.stringify(datosDistribuidor);
         let params = "json="+json;
 
+        console.log("aqui"+params);
+
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
                                     .set('Authorization', token);
 

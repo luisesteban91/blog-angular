@@ -16,14 +16,13 @@
             </div>
         <input  type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
         <br>
-        
       </div>
 
       
       <div>
         <p>{{formattedAddress}}</p>
-        Lat:{{lat}}
-        Long:{{lng}}
+        <!-- Lat:{{lat}}
+        Long:{{lng}} -->
       </div>
       <hr>
 

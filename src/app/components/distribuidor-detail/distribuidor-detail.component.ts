@@ -44,6 +44,7 @@ export class DistribuidorDetailComponent implements OnInit{
   public lng: number;
   public zoom: number;
   public url: string;
+  public coords;
 
   formattedAddress = '';
   options = {
@@ -64,10 +65,13 @@ export class DistribuidorDetailComponent implements OnInit{
     this.token = this._userService.getToken();
     this.distribuidor = new  Distribuidor(1, '', '');
     this.zoom = 15;
+    this.lat = 19.4326077;
+    this.lng = -99.13320799999997;
    }
 
   ngOnInit() {
     this.obtenerUbicacionActual();
+    console.log(this.coords);
   }
 
   iconMap = {
@@ -101,6 +105,7 @@ export class DistribuidorDetailComponent implements OnInit{
         console.log(<any>error);
       }
     );
+
   }
 
   public obtenerUbicacionActual(){
@@ -110,9 +115,31 @@ export class DistribuidorDetailComponent implements OnInit{
           //alert("Latitud:"+Response.coords.latitude + - + "Longitud:" + Response.coords.longitude);
           this.lat = Response.coords.latitude;
           this.lng = Response.coords.longitude;
+
+          this.coords = {
+            lat: this.lat,
+            lng: this.lng
+          }
+
+          this._distribuidorService.getDistribuidor(this.token, this.coords).subscribe(
+            Response => {
+              if(Response.status == 'success'){
+                this.distribuidor = Response.distribuidores;
+                this.status = 'success';
+              }else{
+                this.status = 'error';
+                console.log("despuesd de aqui2");
+              }
+            },
+            error =>{
+              this.status = 'error ';
+              console.log(<any>error);
+            }
+          );
+
         },
         error => {
-          alert('algo salio mal');
+          alert('ingrese alguna direccion.');
         }
       );
     }else{

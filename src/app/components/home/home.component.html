@@ -1,6 +1,13 @@
-<div class="loading" *ngIf="!posts">
-  Cargando...
+<div class="d-flex justify-content-center">
+  <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status" *ngIf="!posts">
+    <span class="sr-only">Loading...</span>
+  </div>
 </div>
+
+<!-- <div class="progress" *ngIf="!posts">
+  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+</div> -->
+
 <div class="container-fluid mt-3" *ngIf="posts">
   <h1>{{page_title}}</h1>
 

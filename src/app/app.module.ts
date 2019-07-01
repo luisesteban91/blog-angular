@@ -25,7 +25,8 @@ import { PostListComponent } from './components/post-list/post-list.component';
 import { DistribuidorDetailComponent } from './components/distribuidor-detail/distribuidor-detail.component';
 
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";//google place autocomplete}
-import { AgmCoreModule } from '@agm/core';//mapa de google
+import { AgmCoreModule } from '@agm/core';
+import { NewDistribuidorComponent } from './components/new-distribuidor/new-distribuidor.component';//mapa de google
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { AgmCoreModule } from '@agm/core';//mapa de google
     CategoryDetailComponent,
     ProfileComponent,
     PostListComponent,
-    DistribuidorDetailComponent
+    DistribuidorDetailComponent,
+    NewDistribuidorComponent
   ],
   imports: [
     BrowserModule,
