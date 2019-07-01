@@ -50,6 +50,7 @@
                     [zoom]="zoom"
                     (mapClick)="mapCliqueado($event)">
                         <agm-marker
+                          [iconUrl]="iconMap.iconUrl"
                           *ngFor="let m of distribuidor; let i = index"
                           (markerClick)="marcadorCliqueado(m, i)"
                           [latitude]="m.lat" 

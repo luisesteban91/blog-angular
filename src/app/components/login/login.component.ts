@@ -21,14 +21,21 @@ export class LoginComponent implements OnInit {
     private _router: Router, 
     private _route: ActivatedRoute) { 
 
-  	this.page_title = 'identificate';
-  	this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
+  	this.page_title = 'Identificate';
+    this.user = new User(1, '', '', 'ROLE_USER', '', '', '', '');
+    
+    this.loadUser();
   }
 
   ngOnInit() {
     this.logout(); //esto se ejeuta siempre y se cierra caundo le llega el parametro sure por URL
     //console.log('Componete de Login Iniciado!');
     //console.log(this._userService.test());
+  }
+
+  loadUser(){
+    this.identity = this._userService.getIdentity();
+    this.token = this._userService.getToken(); 
   }
 
   onSubmit(form){

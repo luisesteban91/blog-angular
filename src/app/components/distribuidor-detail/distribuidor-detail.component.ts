@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from  '../../services/user.service';
 import { DistribuidorService } from '../../services/distribuidor.service';
 import { Distribuidor } from '../../models/distribuidor';
+import { global } from '../../services/global';
 
 @Component({
   selector: 'app-distribuidor-detail',
@@ -42,6 +43,7 @@ export class DistribuidorDetailComponent implements OnInit{
   public lat: number;
   public lng: number;
   public zoom: number;
+  public url: string;
 
   formattedAddress = '';
   options = {
@@ -49,6 +51,8 @@ export class DistribuidorDetailComponent implements OnInit{
       country: ['MX'] 
     }
   }
+
+
 
   constructor(
     private _route: ActivatedRoute,
@@ -59,16 +63,21 @@ export class DistribuidorDetailComponent implements OnInit{
     this.title = "Detalles del Distribuidor";
     this.token = this._userService.getToken();
     this.distribuidor = new  Distribuidor(1, '', '');
-    this.lat = 19.4326077;
-    this.lng = -99.13320799999997;
     this.zoom = 15;
    }
 
   ngOnInit() {
+    this.obtenerUbicacionActual();
+  }
+
+  iconMap = {
+    iconUrl: global.url+"user/avatar/favicon.ico",
+    iconEight: 15
   }
 
   public handleAddressChange(address: any) {
     this.formattedAddress = address.formatted_address;
+
     this.lat = address.geometry.location.lat();
     this.lng = address.geometry.location.lng();
 
@@ -92,8 +101,25 @@ export class DistribuidorDetailComponent implements OnInit{
         console.log(<any>error);
       }
     );
-
-
   }
+
+  public obtenerUbicacionActual(){
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(
+        Response =>{
+          //alert("Latitud:"+Response.coords.latitude + - + "Longitud:" + Response.coords.longitude);
+          this.lat = Response.coords.latitude;
+          this.lng = Response.coords.longitude;
+        },
+        error => {
+          alert('algo salio mal');
+        }
+      );
+    }else{
+      console.log('no soportado');
+    }
+  }
+
+  
 
 }
