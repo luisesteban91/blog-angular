@@ -20,12 +20,22 @@ export class DistribuidorService{
         let json = JSON.stringify(datosDistribuidor);
         let params = "json="+json;
 
-        console.log("aqui"+params);
-
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
                                     .set('Authorization', token);
 
         return this._http.post(this.url + 'distribuidor', params, {headers:headers});
+    }
+
+    create(token, datosDistribuidor):Observable<any>{
+        let json = JSON.stringify(datosDistribuidor);
+        let params = "json="+json;
+
+        console.log("en create:"+params);
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+                                    .set('Authorization', token);
+
+        return this._http.post(this.url + 'distribuidor/create', params, {headers:headers});
     }
 
 }

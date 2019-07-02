@@ -17,6 +17,7 @@ export class NewDistribuidorComponent implements OnInit {
   public token;
   public status;
   public distribuidor:Distribuidor;
+  public mensaje_backend:string;
 
   constructor(private _route: ActivatedRoute,
     private _router: Router,
@@ -30,4 +31,30 @@ export class NewDistribuidorComponent implements OnInit {
   ngOnInit() {
     this.distribuidor = new  Distribuidor(1, '', '');
   }
+
+  onSubmit(form){
+    console.log("en sonsubmit"+form);
+    this._distribuidroService.create(this.token, this.distribuidor).subscribe(
+      Response =>{
+          this.mensaje_backend = Response.message;
+          console.log(Response.message);
+        if(Response.status == 'success'){
+          this.distribuidor = Response.distribuidor;
+          this.status = 'success';
+          
+          //this._router.navigate(['/inicio']);
+        }else{
+          this.status = 'error';
+          this.mensaje_backend = Response.message;
+          console.log(Response.message);
+        }
+      },
+      error => {
+        
+        console.log(error);
+        this.status = 'error';
+      }
+    );
+  }
+
 }
