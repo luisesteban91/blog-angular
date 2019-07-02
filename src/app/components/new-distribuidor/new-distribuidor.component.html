@@ -15,19 +15,119 @@
     
 
     <!-- Formulario crear entradas -->
-    <form class="col-md-5 ml-o pl-0" #NewDistribuidor="ngForm" (ngSubmit)="onSubmit(NewDistribuidor)">
-
-      <div class="form-group">
+    <form #NewDistribuidor="ngForm" (ngSubmit)="onSubmit(NewDistribuidor)">
+      <div class="form-row">
+      <div class="col-md-4 mb-3">
         <label for="clave_interna">Clave Interna</label>
-        <input type="text" name="clave_interna" #title="ngModel" [(ngModel)]="Distribuidor.clave_interna" class="form-control" required>
+        <input [class.is-valid]="clave_interna.valid" [class.is-invalid]="!clave_interna.valid" type="text" name="clave_interna" #clave_interna="ngModel" [(ngModel)]="distribuidor.clave_interna" class="form-control" required pattern="[0-9]+">
         <small *ngIf="!clave_interna.valid && clave_interna.touched" class="invalid-feedback d-block">
           La clave no es valida
         </small>
       </div>
+      
+      <div class="col-md-4 mb-3">
+          <label for="nombre">Nombre</label>
+          <input [class.is-valid]="nombre.valid" [class.is-invalid]="!nombre.valid" type="text" name="nombre" #nombre="ngModel" [(ngModel)]="distribuidor.nombre" class="form-control" required pattern="[a-zA-Z]+">
+          <small *ngIf="!nombre.valid && nombre.touched" class="invalid-feedback d-block">
+            el nombre no es valido
+          </small>
+      </div>
 
+      <div class="col-md-4 mb-3">
+          <label for="estado">Estado</label>
+          <select [class.is-valid]="estado.valid" [class.is-invalid]="!estado.valid" class="custom-select" name="estado" #estado="ngModel" [(ngModel)]="distribuidor.estado" class="form-control" required>
+            <option value="" selected>Open this select menu</option>
+                <option value="Aguascalientes">Aguascalientes</option>
+                <option value="Baja California">Baja California</option>
+                <option value="Baja California Sur">Baja California Sur</option>
+                <option value="Campeche">Campeche</option>
+                <option value="Coahuila de Zaragoza">Coahuila de Zaragoza</option>
+                <option value="Colima">Colima</option>
+                <option value="Chiapas">Chiapas</option>
+                <option value="Chihuahua">Chihuahua</option>
+                <option value="Distrito Federal">Distrito Federal</option>
+                <option value="Durango">Durango</option>
+                <option value="Guanajuato">Guanajuato</option>
+                <option value="Guerrero">Guerrero</option>
+                <option value="Hidalgo">Hidalgo</option>
+                <option value="Jalisco">Jalisco</option>
+                <option value="México">México</option>
+                <option value="Michoacán de Ocampo">Michoacán de Ocampo</option>
+                <option value="Morelos">Morelos</option>
+                <option value="Nayarit">Nayarit</option>
+                <option value="Nuevo León">Nuevo León</option>
+                <option value="Oaxaca">Oaxaca</option>
+                <option value="Puebla">Puebla</option>
+                <option value="Querétaro">Querétaro</option>
+                <option value="Quintana Roo">Quintana Roo</option>
+                <option value="San Luis Potosí">San Luis Potosí</option>
+                <option value="Sinaloa">Sinaloa</option>
+                <option value="Sonora">Sonora</option>
+                <option value="Tabasco">Tabasco</option>
+                <option value="Tamaulipas">Tamaulipas</option>
+                <option value="Tlaxcala">Tlaxcala</option>
+                <option value="Veracruz de Ignacio de la Llave">Veracruz de Ignacio de la Llave</option>
+                <option value="Yucatán">Yucatán</option>
+                <option value="Zacatecas">Zacatecas</option>
+          </select>
+          <div *ngIf="!estado.valid && estado.touched" class="invalid-feedback d-block">Estado no puede estar vacio</div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+          <label for="codigo_postal">Codigo Postal</label>
+          <input [class.is-valid]="codigo_postal.valid" [class.is-invalid]="!codigo_postal.valid" type="text" name="codigo_postal" #codigo_postal="ngModel" [(ngModel)]="distribuidor.codigo_postal" class="form-control" required pattern="^[0-9]{5}$">
+          <small *ngIf="!codigo_postal.valid && codigo_postal.touched" class="invalid-feedback d-block">
+            el codigo postal no es valido
+          </small>
+      </div>
+
+      <div class="col-md-4 mb-3">
+          <label for="lat">Latidud</label>
+          <input [class.is-valid]="lat.valid" [class.is-invalid]="!lat.valid" type="text" name="lat" #lat="ngModel" [(ngModel)]="distribuidor.lat" class="form-control" required pattern="^-?[0-9]\d*(\.\d+)?$">
+          <small *ngIf="!lat.valid && lat.touched" class="invalid-feedback d-block">
+            La latidud postal no es valido
+          </small>
+      </div>
+
+      <div class="col-md-4 mb-3">
+          <label for="lng">Longitude</label>
+          <input [class.is-valid]="lng.valid" [class.is-invalid]="!lng.valid" type="text" name="lng" #lng="ngModel" [(ngModel)]="distribuidor.lng" class="form-control" required pattern="^-?[0-9]\d*(\.\d+)?$">
+          <small *ngIf="!lng.valid && lng.touched" class="invalid-feedback d-block">
+            La longitude no es valido
+          </small>
+      </div>
+      
+      <div class="col-md-4 mb-3">
+          <label for="domicilio">Domicilio</label>
+          <input [class.is-valid]="domicilio.valid" [class.is-invalid]="!domicilio.valid" type="text" name="domicilio" #domicilio="ngModel" [(ngModel)]="distribuidor.domicilio" class="form-control" required>
+          <small *ngIf="!domicilio.valid && domicilio.touched" class="invalid-feedback d-block">
+            El domicilio no es valido
+          </small>
+      </div>
+      
+      <div class="col-md-4 mb-3">
+          <label for="zona">Zona</label>
+          <select [class.is-valid]="zona.valid" [class.is-invalid]="!zona.valid" class="custom-select" name="zona" #zona="ngModel" [(ngModel)]="distribuidor.zona" class="form-control" required>
+            <option value="" selected>Open this select menu</option>
+                <option value="Centro">Centro</option>
+                <option value="Norte">Norte</option>
+                <option value="Occidente">Occidente</option>
+                <option value="Campeche">Campeche</option>
+                <option value="Sur">Sur</option>
+          </select>
+          <div *ngIf="!zona.valid && zona.touched" class="invalid-feedback d-block">Zona no puede estar vacio</div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="estatus">Estatus</label>
+        <div class="custom-control custom-switch">
+            
+            <input type="checkbox" class="custom-control-input form-control" id="estatus" name="estatus" #estatus="ngModel" [(ngModel)]="distribuidor.estatus" required>
+            <label class="custom-control-label" for="estatus"></label>
+        </div>
+      </div>
+    </div>
 
       <input type="submit" value="Guardar" class="btn btn-success" [disabled]="NewDistribuidor.invalid"/>
-
     </form>
     <br>
   </div>

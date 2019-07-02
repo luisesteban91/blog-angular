@@ -22,12 +22,12 @@ export class NewDistribuidorComponent implements OnInit {
     private _router: Router,
     private _userService: UserService,
     private _distribuidroService: DistribuidorService) {
-    this.title = "Nuevo Distribuidor"
-    this.identity = this._userService.getIdentity();
-    this.token = this._userService.getToken();
+      this.title = "Nuevo Distribuidor"
+      this.identity = this._userService.getIdentity();
+      this.token = this._userService.getToken();
    }
 
   ngOnInit() {
-    this.distribuidor = new Distribuidor(1, 1, '', '', '', '', '', true,'', '');
+    this.distribuidor = new  Distribuidor(1, '', '');
   }
 }
