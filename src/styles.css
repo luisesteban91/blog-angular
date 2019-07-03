@@ -37,3 +37,15 @@ footer{
 agm-map {
   	height: 300px;
 }
+
+/* ESTILOS FOOTER */
+@media screen and (min-width: 201px) and (max-width: 768px){
+	.footerMob{
+		display: block!important;
+		width: 100%!important;
+		text-align: center!important;
+		padding: 25px 0;
+	}
+}
+
+/* FIN ESTILOS FOOTER */

@@ -42,7 +42,7 @@ export class NewDistribuidorComponent implements OnInit {
           this.distribuidor = Response.distribuidor;
           this.status = 'success';
           
-          //this._router.navigate(['/inicio']);
+          this._router.navigate(['/distribuidor']);
         }else{
           this.status = 'error';
           this.mensaje_backend = Response.message;

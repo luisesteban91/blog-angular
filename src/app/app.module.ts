@@ -57,7 +57,7 @@ import { NewDistribuidorComponent } from './components/new-distribuidor/new-dist
     AngularFileUploaderModule,
     GooglePlaceModule, //google autocomplete
     AgmCoreModule.forRoot({
-      apiKey: ''
+      apiKey: 'KEY'
     }) //mapa google
   ],
   providers: [
